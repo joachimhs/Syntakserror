@@ -110,6 +110,10 @@
         height: 200px;
         object-fit: cover;
     }
+
+    .article-card-first img {
+        height: 450px;
+    }
     .card-content {
         padding: 1.5rem;
     }
