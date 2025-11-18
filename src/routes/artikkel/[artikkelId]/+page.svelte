@@ -44,6 +44,10 @@
             <img class="featured-image" src={article.thumbnail} alt={article.title} />
 
             <div class="content prose">
+                <Markdown toHtml={article.preamble} />
+            </div>
+
+            <div class="content prose">
                 <Markdown toHtml={article.contents}></Markdown>
             </div>
 

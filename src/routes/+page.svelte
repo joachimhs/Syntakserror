@@ -125,6 +125,7 @@
     }
     h3 {
         margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
         font-size: 1.25rem;
         font-weight: 700;
         color: var(--primary-text-color);
