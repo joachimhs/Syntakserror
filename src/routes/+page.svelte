@@ -25,19 +25,20 @@
         <div class="article-list">
             {#if articles && articles.length > 0}
                 {#each articles as post, index}
-
-                    <a href="/artikkel/{post.id}" class="article-card {index === 0 ? 'article-card-first' : ''}">
-                        <img src={post.thumbnail} alt={post.title} />
-                        <div class="card-content">
-                            <span class="category">
-                                {#each post.topics.split(",") as topic}
-                                    <span class="badge">{topic}</span>
-                                {/each}
-                            </span>
-                            <h3>{post.title}</h3>
-                            <p>{post.preamble}</p>
-                        </div>
-                    </a>
+                    {#if post.isPublished}
+                        <a href="/artikkel/{post.id}" class="article-card {index === 0 ? 'article-card-first' : ''}">
+                            <img src={post.thumbnail} alt={post.title} />
+                            <div class="card-content">
+                                <span class="category">
+                                    {#each post.topics.split(",") as topic}
+                                        <span class="badge">{topic}</span>
+                                    {/each}
+                                </span>
+                                <h3>{post.title}</h3>
+                                <p>{post.preamble}</p>
+                            </div>
+                        </a>
+                    {/if}
                 {/each}
             {:else}
                 <p>Ingen artikler funnet.</p>

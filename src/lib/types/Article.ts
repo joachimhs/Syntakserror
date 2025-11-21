@@ -8,4 +8,5 @@ export interface Article extends CacheItem{
   thumbnail: string;
   contents: string;      // markdown string
   author: string;
+  isPublished: boolean;
 };
