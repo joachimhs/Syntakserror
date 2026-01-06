@@ -17,6 +17,7 @@
             <h5>Lenker</h5>
             <ul>
                 <li><a href="/om-syntakserror">Om Syntakserror</a></li>
+                <li><a href="/kompetanse">Kompetanse</a></li>
             </ul>
         </div>
 
