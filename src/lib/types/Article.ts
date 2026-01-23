@@ -9,4 +9,4 @@ export interface Article extends CacheItem{
   contents: string;      // markdown string
   author: string;
   isPublished: boolean;
-};
+}

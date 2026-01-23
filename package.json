@@ -1,7 +1,7 @@
 {
 	"name": "syntakserror",
 	"private": true,
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev --port 5175 --host",
@@ -17,16 +17,18 @@
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.47.1",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@types/reveal.js": "^5.2.2",
+		"dotenv": "^17.2.3",
 		"highlight.js": "^11.11.1",
 		"marked": "^16.4.1",
 		"marked-highlight": "^2.2.2",
+		"reveal.js": "^5.2.1",
 		"svelte": "^5.41.0",
 		"svelte-cache-store": "^0.5.6",
 		"svelte-check": "^4.3.3",
 		"svelte-codemirror-editor": "^1.4.1",
 		"typescript": "^5.9.3",
-		"vite": "^7.1.10",
-        "dotenv": "^17.2.3"
+		"vite": "^7.1.10"
 	},
 	"dependencies": {
 		"dotenv": "^17.2.3"

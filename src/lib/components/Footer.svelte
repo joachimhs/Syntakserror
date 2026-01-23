@@ -8,7 +8,7 @@
                 Syntaks<span class="accent">error</span><span class="blinking-cursor"></span>
             </a>
             <p class="copyright">
-                &copy; 2025 Joachim Haagen Skeie | Syntakserror.no <br />Alle rettigheter reservert.
+                &copy; 2025 - 2026 Joachim Haagen Skeie | Syntakserror.no <br />Alle rettigheter reservert.
             </p>
         </div>
 
