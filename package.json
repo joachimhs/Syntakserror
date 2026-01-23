@@ -1,10 +1,11 @@
 {
 	"name": "syntakserror",
 	"private": true,
-	"version": "1.0.8",
+	"version": "1.0.12",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev --port 5175 --host",
+		"prebuild": "mkdir -p static/reveal/theme && cp node_modules/reveal.js/dist/theme/*.css static/reveal/theme/",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
