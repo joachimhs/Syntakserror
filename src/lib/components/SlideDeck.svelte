@@ -101,7 +101,7 @@
                     ---- = Vertical Slide
                  -->
 
-                <section data-markdown data-background-image="{presentation.backgroundUrl}" data-background-size="contain">
+                <section data-markdown data-background-image="{presentation.backgroundUrl}" data-background-position="bottom" data-background-size="contain">
                 {#if loaded && presentation.content}
                     {presentation.content}
                 {/if}
@@ -110,9 +110,11 @@
             </div>
     </div>
 
-<div class="reveal-footer">
-    <img src={presentation.footerImageUrl} alt="Presentasjon footer bilde"/>
-</div>
+{#if presentation.footerImageUrl}
+    <div class="reveal-footer">
+        <img src={presentation.footerImageUrl} alt="Presentasjon footer bilde"/>
+    </div>
+{/if}
 
 
 <style>

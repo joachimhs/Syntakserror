@@ -18,6 +18,7 @@
             <ul>
                 <li><a href="/om-syntakserror">Om Syntakserror</a></li>
                 <li><a href="/kompetanse">Kompetanse</a></li>
+                <li><a href="/presentasjoner">Presentasjoner</a></li>
             </ul>
         </div>
 
