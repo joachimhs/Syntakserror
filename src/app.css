@@ -1,46 +1,58 @@
 /* src/app.css */
 
 /* Importer fonter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Source+Code+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Source+Code+Pro:wght@400;500&display=swap');
 
 /* --- TEMA VARIABLER --- */
 :root {
     /* Standard tema er DARK MODE */
-    --background-color: #0f172a; /* slate-900 */
-    --surface-color: #1e293b; /* slate-800 */
-    --primary-text-color: #e2e8f0; /* slate-200 */
-    --secondary-text-color: #94a3b8; /* slate-400 */
-    --accent-color: #60a5fa; /* blue-400 */
-    --border-color: #334155; /* slate-700 */
-    --shadow-color: rgba(0, 0, 0, 0.2);
-    --badge-text-color: rgb(219, 234, 254);
-    --badge-background-color: rgb(29, 78, 216);
-    --code-background-color: #171717;
-    --code-hightlight-color: #333;
-    --thin-accent: rgba(52, 129, 255, 0.45);
-    --highlight: #ffeb3b78;
+    --background-color: #0a0f1a;
+    --surface-color: #111827;
+    --surface-color-elevated: #1a2235;
+    --primary-text-color: #f1f5f9;
+    --secondary-text-color: #94a3b8;
+    --accent-color: #6366f1;
+    --accent-color-light: #818cf8;
+    --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+    --border-color: rgba(255, 255, 255, 0.06);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --badge-text-color: #c7d2fe;
+    --badge-background-color: rgba(99, 102, 241, 0.15);
+    --badge-border-color: rgba(99, 102, 241, 0.25);
+    --code-background-color: #0d1117;
+    --code-hightlight-color: rgba(99, 102, 241, 0.08);
+    --thin-accent: rgba(99, 102, 241, 0.3);
+    --highlight: rgba(99, 102, 241, 0.15);
+    --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.1);
+    --glow: 0 0 60px rgba(99, 102, 241, 0.08);
 }
 
 html.light-mode {
     /* Overstyr variablene for LIGHT MODE */
-    --background-color: #ffffff;
-    --surface-color: #f8fafc; /* slate-50 */
-    --primary-text-color: #0f172a; /* slate-900 */
-    --secondary-text-color: #64748b; /* slate-500 */
-    --accent-color: #3b82f6; /* blue-600 */
-    --border-color: #e2e8f0; /* slate-200 */
-    --shadow-color: rgba(0, 0, 0, 0.05);
-    --badge-text-color:  rgb(29, 78, 216);
-    --badge-background-color: rgb(219, 234, 254);
-    --code-background-color: #c1c1c1;
-    --code-hightlight-color: #ccc;
-    --thin-accent: rgb(59 130 246 / 20%);
-    --highlight: #ffeb3b78;
+    --background-color: #fafbff;
+    --surface-color: #ffffff;
+    --surface-color-elevated: #f8f9fc;
+    --primary-text-color: #0f172a;
+    --secondary-text-color: #64748b;
+    --accent-color: #4f46e5;
+    --accent-color-light: #6366f1;
+    --accent-gradient: linear-gradient(135deg, #4f46e5, #7c3aed, #8b5cf6);
+    --border-color: rgba(0, 0, 0, 0.06);
+    --shadow-color: rgba(0, 0, 0, 0.04);
+    --badge-text-color: #4338ca;
+    --badge-background-color: rgba(79, 70, 229, 0.08);
+    --badge-border-color: rgba(79, 70, 229, 0.15);
+    --code-background-color: #f6f8fa;
+    --code-hightlight-color: rgba(79, 70, 229, 0.06);
+    --thin-accent: rgba(79, 70, 229, 0.15);
+    --highlight: rgba(79, 70, 229, 0.1);
+    --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(79, 70, 229, 0.12);
+    --glow: 0 0 60px rgba(79, 70, 229, 0.05);
 }
 /* --- SLUTT PÅ TEMA --- */
 
 pre code.hljs {
-    border-radius: 10px !important;
+    border-radius: 12px !important;
 }
 
 /* Grunnleggende stil-reset og globals */
@@ -55,39 +67,50 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--background-color);
     color: var(--primary-text-color);
-    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
 
 a {
-    color: var(--accent-color);
+    color: var(--accent-color-light);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
 }
 
 .badge {
     background: var(--badge-background-color);
     color: var(--badge-text-color);
-    margin: 0 10px 10px 0;
-    padding: 6px 12px;
-    border-radius: 12px;
+    border: 1px solid var(--badge-border-color);
+    margin: 0 8px 8px 0;
+    padding: 4px 12px;
+    border-radius: 100px;
     display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 /* Blinkende markør for logoen */
 .blinking-cursor {
-    margin-left: 4px;
-    border-right: 3px solid var(--accent-color);
+    margin-left: 2px;
+    border-right: 2px solid var(--accent-color);
     animation: blink 1s step-end infinite;
-    padding-right: 2px;
+    padding-right: 1px;
 }
 
 @keyframes blink {
@@ -97,66 +120,58 @@ a {
 
 /*--------------------------------------*/
 /* Styling for .page-content            */
-/* Bruker CSS-variabler for tema        */
 /*--------------------------------------*/
 
 .page-content {
-    /* Setter en maksbredde og sentrerer innholdet for bedre lesbarhet */
-    max-width: 768px;
-    margin: 3rem auto;
-    padding: 0 2rem; /* Gir luft på sidene */
-
-    /* Definerer standardfarge og font for alt inni div-en */
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 2rem;
     color: var(--secondary-text-color);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.7; /* Øker linjeavstanden for enklere lesing */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.75;
 }
 
-/* Stil for hovedoverskriften (Om Syntakserror) */
 .page-content h3 {
     color: var(--primary-text-color);
-    font-size: clamp(2rem, 5vw, 2.5rem); /* Responsiv font-størrelse */
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color); /* Bruker temafargen for border */
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+    letter-spacing: -0.02em;
 }
 
-/* Stil for underoverskrifter (Hvorfor "Syntakserror"?, etc.) */
 .page-content h4 {
     color: var(--primary-text-color);
-    font-size: clamp(1.25rem, 4vw, 1.5rem); /* Responsiv font-størrelse */
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
     font-weight: 600;
-    margin-top: 3rem; /* Mer avstand over for å lage tydelige seksjoner */
+    margin-top: 3rem;
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
 }
 
-/* Stil for avsnitt */
 .page-content p {
     margin-bottom: 1.25rem;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
 }
 
-/* Stil for punktlisten */
 .page-content ul {
     list-style-position: outside;
-    padding-left: 25px;
+    padding-left: 24px;
     margin-bottom: 1.5rem;
 }
 
 .page-content li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     padding-left: 0.5rem;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
 }
 
-/* Fremhever den innledende teksten i hvert listepunkt */
 .page-content li > strong {
     color: var(--primary-text-color);
     font-weight: 600;
 }
 
-/* Stil for den siste linjen (signaturen) */
 .page-content p:last-of-type {
     margin-top: 3rem;
     font-style: normal;
@@ -165,82 +180,46 @@ a {
 }
 
 .tips {
-    /* Gir sitatet en tydelig venstrekant */
-    border-left: 4px solid var(--accent-color);
-
-    /* Gir luft på innsiden slik at teksten ikke klistrer seg til kanten */
+    border-left: 3px solid var(--accent-color);
     padding: 1.25rem 1.5rem;
-
-    /* Gir avstand til innholdet over og under */
-    margin: 2.5rem 0;
-
-    /* En subtil bakgrunnsfarge for å skille sitatet fra resten av teksten */
-    background-color: var(--surface-color);
-
-    /* Gjør teksten litt større og i kursiv */
-    font-size: 1.2rem;
+    margin: 2rem 0;
+    background-color: var(--surface-color-elevated);
+    font-size: 1.1rem;
     font-style: italic;
-
-    /* Bruker den primære tekstfargen for god lesbarhet */
     color: var(--primary-text-color);
-
-    /* En myk skygge for å gi litt dybde */
-    border-radius: 4px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    border-radius: 0 8px 8px 0;
 }
 
 .sitat {
-    /* Gir sitatet en tydelig venstrekant */
-    border-left: 4px solid var(--accent-color);
-
-    /* Gir luft på innsiden slik at teksten ikke klistrer seg til kanten */
-    padding: 1.25rem 1.5rem;
-
-    /* Gir avstand til innholdet over og under */
+    border-left: 3px solid var(--accent-color);
+    padding: 1.5rem 1.75rem;
     margin: 2.5rem 0;
-
-    /* En subtil bakgrunnsfarge for å skille sitatet fra resten av teksten */
-    background-color: var(--surface-color);
-
-    /* Gjør teksten litt større og i kursiv */
-    font-size: 1.2rem;
+    background-color: var(--surface-color-elevated);
+    font-size: 1.125rem;
     font-style: italic;
-
-    /* Bruker den primære tekstfargen for god lesbarhet */
     color: var(--primary-text-color);
-
-    /* En myk skygge for å gi litt dybde */
-    border-radius: 4px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    border-radius: 0 8px 8px 0;
+    position: relative;
 }
 
-/* Valgfritt: Legg til anførselstegn med pseudo-elementer */
 .sitat::before {
-    content: "“";
+    content: "\201C";
     font-size: 3rem;
     color: var(--accent-color);
     line-height: 0;
     margin-right: 0.5rem;
     vertical-align: -0.4em;
+    opacity: 0.6;
 }
 
 .sitat-referanse {
-    /* Justerer teksten til høyre */
     text-align: right;
-
-    /* Tilbakestiller til normal font-stil (ikke kursiv) */
     font-style: normal;
-
-    /* Gjør teksten litt mindre enn selve sitatet */
-    font-size: 1rem;
-
-    /* Bruker den sekundære tekstfargen for å gjøre den mindre fremtredende */
+    font-size: 0.9375rem;
     color: var(--secondary-text-color);
-
-    /* Gir litt luft mellom sitatet og referansen */
     margin-top: 1rem;
 }
 
 .sitat-referanse:before {
-    content: "— ";
+    content: "\2014 ";
 }

@@ -17,16 +17,26 @@
 <style>
     /* Basic styling for the code block container */
     .markdown-content :global(pre) {
-        border-radius: 16px;
+        border-radius: 12px;
         overflow-x: auto;
         line-height: 0.7rem;
-        border: 1px solid #888;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        border: 1px solid var(--border-color);
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .markdown-content :global(code) {
-        font-family: 'Fira Code', 'Courier New', monospace;
+        font-family: 'Source Code Pro', 'Fira Code', 'Courier New', monospace;
+        font-size: 0.9em;
+    }
+
+    .markdown-content :global(p > code),
+    .markdown-content :global(li > code) {
+        background-color: var(--badge-background-color);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 0.85em;
+        border: 1px solid var(--badge-border-color);
     }
 
     /* 4. CSS for the line numbers */
@@ -40,7 +50,7 @@
         width: 2em;
         margin-right: 1em;
         text-align: right;
-        color: #888;
+        color: #555;
         user-select: none;
     }
 

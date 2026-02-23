@@ -15,8 +15,9 @@
 
 <section class="hero">
     <div class="container">
+        <p class="hero-label">Blogg & Betraktninger</p>
         <h1>Velkommen til <span class="accent">Syntakserror</span></h1>
-        <p>Joachims uhildede meninger og betraktninger rundt programmering, rammeverk, programvareutvikling og kunstig "intelligens"!</p>
+        <p class="hero-description">Joachims uhildede meninger og betraktninger rundt programmering, rammeverk, programvareutvikling og kunstig "intelligens"!</p>
     </div>
 </section>
 
@@ -26,22 +27,25 @@
             {#if articles && articles.length > 0}
                 {#each articles as post, index}
                     {#if post.isPublished}
-                        <a href="/artikkel/{post.id}" class="article-card {index === 0 ? 'article-card-first' : ''}">
-                            <img src={post.thumbnail} alt={post.title} />
+                        <a href="/artikkel/{post.id}" class="article-card {index === 0 ? 'article-card-featured' : ''}">
+                            <div class="card-image-wrapper">
+                                <img src={post.thumbnail} alt={post.title} />
+                            </div>
                             <div class="card-content">
-                                <span class="category">
+                                <div class="card-topics">
                                     {#each post.topics.split(",") as topic}
                                         <span class="badge">{topic}</span>
                                     {/each}
-                                </span>
+                                </div>
                                 <h3>{post.title}</h3>
-                                <p>{post.preamble}</p>
+                                <p class="card-preamble">{post.preamble}</p>
+                                <span class="read-more">Les artikkelen &rarr;</span>
                             </div>
                         </a>
                     {/if}
                 {/each}
             {:else}
-                <p>Ingen artikler funnet.</p>
+                <p class="empty-state">Ingen artikler funnet.</p>
             {/if}
         </div>
     </div>
@@ -49,86 +53,174 @@
 
 <style>
     .hero {
-        padding: 6rem 0;
+        padding: 5rem 0 4rem;
         text-align: center;
+        position: relative;
     }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .hero-label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent-color-light);
+        margin-bottom: 1.25rem;
+    }
+
     h1 {
-        font-size: 3rem;
-        font-weight: 900;
+        font-size: clamp(2.25rem, 5vw, 3.5rem);
+        font-weight: 800;
         line-height: 1.1;
+        letter-spacing: -0.03em;
     }
-    .accent { color: var(--accent-color); }
+
+    .accent {
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-description {
+        margin: 1.5rem auto 0;
+        max-width: 56ch;
+        font-size: 1.0625rem;
+        color: var(--secondary-text-color);
+        line-height: 1.7;
+    }
+
+    .articles-section {
+        padding: 3rem 0 5rem;
+    }
 
     .article-list {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 25px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 900px) {
         .article-list {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .article-card-featured {
+            grid-column: span 2 !important;
         }
     }
 
-    .article-list .article-card-first {
-        grid-column-start: 0;
-        grid-column-end: span 3;
+    @media screen and (max-width: 600px) {
+        .article-list {
+            grid-template-columns: 1fr;
+        }
+        .article-card-featured {
+            grid-column: span 1 !important;
+        }
     }
 
-    .hero p {
-        margin: 1.5rem auto 0;
-        max-width: 60ch;
-        font-size: 1.125rem;
-        color: var(--secondary-text-color);
+    .article-card-featured {
+        grid-column: span 3;
     }
-    .articles-section {
-        background-color: var(--surface-color);
-        border-top: 1px solid var(--border-color);
-        padding: 4rem 0;
+
+    .article-card-featured .card-image-wrapper img {
+        height: 380px;
     }
-    .articles-section h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+
     .article-card {
-        display: block;
-        background-color: var(--background-color);
+        display: flex;
+        flex-direction: column;
+        background-color: var(--surface-color);
         border: 1px solid var(--border-color);
-        border-radius: 0.75rem;
+        border-radius: 16px;
         overflow: hidden;
-        margin-bottom: 20px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        color: inherit;
     }
+
     .article-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transform: translateY(-4px);
+        box-shadow: var(--card-hover-shadow);
+        border-color: rgba(99, 102, 241, 0.15);
     }
-    .article-card img {
+
+    .card-image-wrapper {
+        overflow: hidden;
+    }
+
+    .card-image-wrapper img {
         width: 100%;
         height: 200px;
         object-fit: cover;
+        transition: transform 0.4s ease;
     }
 
-    .article-card-first img {
-        height: 450px;
+    .article-card:hover .card-image-wrapper img {
+        transform: scale(1.03);
     }
+
     .card-content {
         padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
     }
-    .category {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--accent-color);
-        text-transform: uppercase;
+
+    .card-topics {
+        margin-bottom: 0.75rem;
     }
+
     h3 {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: var(--primary-text-color);
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.5rem;
+    }
+
+    .article-card-featured h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-preamble {
+        font-size: 0.9rem;
+        color: var(--secondary-text-color);
+        line-height: 1.6;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .read-more {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--accent-color-light);
+        margin-top: 1rem;
+        transition: color 0.2s ease;
+    }
+
+    .article-card:hover .read-more {
+        color: var(--accent-color);
+    }
+
+    .empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        color: var(--secondary-text-color);
+        padding: 4rem 0;
     }
 </style>
