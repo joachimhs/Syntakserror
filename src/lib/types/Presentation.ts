@@ -6,7 +6,9 @@ export interface Presentation extends CacheItem {
   theme: "black" | "white";
   backgroundUrl?: string;
   footerImageUrl?: string;
+  youtubeVideoId?: string;
   isPublished: boolean;
+  isVisible: boolean;
   createdAt: string; // ISO date string
   updatedAt: string | null; // ISO date string or null
 }

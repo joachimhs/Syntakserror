@@ -11,8 +11,8 @@
 
     // Sorted and filtered presentations
     let sortedPresentations = $derived(() => {
-        // First filter by published status
-        let presentations = [...(data.presentations || [])];
+        // Hidden presentations never appear in the list, only via direct URL
+        let presentations = (data.presentations || []).filter(p => p.isVisible);
 
         if (!showDrafts) {
             presentations = presentations.filter(p => p.isPublished);

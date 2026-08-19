@@ -8,11 +8,21 @@
 
 	import { theme } from '$lib/stores/theme';
 	import type {Article} from "$lib/types/Article";
+	import type {CVProfile, CVExperience, ExperiencePoint, CVPublication,
+	              CVProject, CVSkill, CVTalk, CVEducation} from "$lib/types/CV";
 	import {onMount} from "svelte";
 
 	let { children, data } = $props();
 
 	cacheStore.registerType<Article>('article', 'articles', '/sequel-api/api-route')
+	cacheStore.registerType<CVProfile>('cvProfile', 'cvProfiles', '/sequel-api/api-route')
+	cacheStore.registerType<CVExperience>('cvExperience', 'cvExperiences', '/sequel-api/api-route')
+	cacheStore.registerType<ExperiencePoint>('experiencePoint', 'experiencePoints', '/sequel-api/api-route')
+	cacheStore.registerType<CVPublication>('cvPublication', 'cvPublications', '/sequel-api/api-route')
+	cacheStore.registerType<CVProject>('cvProject', 'cvProjects', '/sequel-api/api-route')
+	cacheStore.registerType<CVSkill>('cvSkill', 'cvSkills', '/sequel-api/api-route')
+	cacheStore.registerType<CVTalk>('cvTalk', 'cvTalks', '/sequel-api/api-route')
+	cacheStore.registerType<CVEducation>('cvEducation', 'cvEducations', '/sequel-api/api-route')
 
     const {openGraphic}  = data;
 

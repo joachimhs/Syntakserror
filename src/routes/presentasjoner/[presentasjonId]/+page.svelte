@@ -19,6 +19,20 @@
     {#key data.presentation?.id}
         {#if data.presentation}
             <SlideDeck presentation={data.presentation} />
+            {#if data.presentation.youtubeVideoId}
+                <div class="video-container">
+                    <h3>Opptak</h3>
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/{data.presentation.youtubeVideoId}"
+                            title="YouTube video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            {/if}
         {/if}
     {/key}
 </div>
@@ -53,5 +67,33 @@
 
     .back-link svg {
         flex-shrink: 0;
+    }
+
+    .video-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+    }
+
+    .video-container h3 {
+        margin-bottom: 1rem;
+        color: var(--text-secondary, #333);
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 </style>
